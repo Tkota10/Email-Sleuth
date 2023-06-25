@@ -11,10 +11,15 @@ export const articleApi = createApi({
 
       return headers;
     },
+    prepareRequest: (request) => {
+      request.credentials = 'include'; // Include credentials (cookies) in the request
+      request.headers.set('Cookie', 'cross-site-cookie=whatever; SameSite=None; Secure'); // Set the SameSite attribute in the cookie header
+      return request;
+    },
   }),
   endpoints: (builder) => ({
     getSummary: builder.query({
-        query: (params) => `email-extractor?url=${encodeURIComponent(params.articleUrl)}`,
+      query: (params) => `email-extractor?url=${encodeURIComponent(params.articleUrl)}`,
     }),
   }),
 });
