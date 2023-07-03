@@ -28,29 +28,29 @@ const Demo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const existingArticle = allArticles.find(
-      (item) => item.url === article.url
-    );
-
+  
+    const existingArticle = allArticles.find((item) => item.url === article.url);
+  
     if (existingArticle) return setArticle(existingArticle);
-
+  
     const { data } = await getSummary({ articleUrl: article.url });
-    if (data?.summary) {
-      const newArticle = { ...article, summary: data.summary };
+    console.log("Response data:", data);
+  
+    if (data?.result) {
+      const emails = Object.keys(data.result);
+      console.log("Emails:", emails);
+  
+      const summary = emails.join(", ");
+      const newArticle = { ...article, summary };
       const updatedAllArticles = [newArticle, ...allArticles];
-
-      console.log("test")
-      // update state and local storage
+  
       setArticle(newArticle);
-
-      console.log(newArticle);
-
       setAllArticles(updatedAllArticles);
       localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
+  
+      console.log("Summary:", summary);
     }
   };
-
   // copy the url and toggle the icon for user feedback
   const handleCopy = (copyUrl) => {
     setCopied(copyUrl);
@@ -135,7 +135,7 @@ const Demo = () => {
           article.summary && (
             <div className="flex flex-col gap-3">
               <h2 className="font-satoshi font-bold text-gray-600 text-xl">
-                Article <span className="blue_gradient">Summary</span>
+                Email <span className="blue_gradient">Summary</span>
               </h2>
               <div className="summary_box">
                 <p className="font-inter font-medium text-sm text-gray-700">
