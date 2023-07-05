@@ -7,7 +7,7 @@ const Hero = () => {
     <header className="w-full flex justify-center items-center flex-col">
       <nav className="navbar">
         <div className="navbar-gradient">
-          <span className="orange_gradient ">Email Sleuth</span>
+          <span className="purple_gradient">Email Sleuth</span>
         </div>
         <button
           type="button"
@@ -22,7 +22,7 @@ const Hero = () => {
 
       <h1 className="head_text">
         Quickly discover emails with  <br className="max-md:hidden" />
-        <span className="orange_gradient ">Email Sleuth</span>
+        <span className="purple_gradient ">Email Sleuth</span>
       </h1>
       <h2 className="desc">
       Simplify your lead generation with Email Sleuth, an <span style={{ fontWeight: 'bold' }}>AI-powered</span> email scraper 
