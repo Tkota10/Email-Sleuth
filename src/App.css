@@ -113,3 +113,15 @@
 .summary_box {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4;
 }
+
+.link_email {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #4a5568;
+  cursor: pointer;
+}
+
+.link_email:hover {
+  text-decoration: underline;
+}

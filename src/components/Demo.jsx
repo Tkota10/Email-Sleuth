@@ -52,9 +52,9 @@ const Demo = () => {
     }
   };
 
-  const clearLocalStorage = () => {
-    localStorage.removeItem("articles");
+  const handleClearHistory = () => {
     setAllArticles([]);
+    localStorage.removeItem("articles");
   };
 
   // copy the url and toggle the icon for user feedback
@@ -69,6 +69,15 @@ const Demo = () => {
       handleSubmit(e);
     }
   };
+
+  const handleEmailClick = (emails) => {
+    const emailList = emails.split(", ");
+    const mailtoLink = "mailto:" + emailList.join(",");
+    window.location.href = mailtoLink;
+  };
+
+  
+
 
   return (
     <section className="mt-16 w-full max-w-xl">
@@ -88,6 +97,11 @@ const Demo = () => {
           <button type="submit" className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700">
             <p>↵</p>
           </button>
+
+          <button type="button" className="clear_history_btn" onClick={handleClearHistory}>
+            Clear History
+          </button>
+        
     
         </form>
 
@@ -134,9 +148,9 @@ const Demo = () => {
                 Email <span className="blue_gradient">Summary</span>
               </h2>
               <div className="summary_box">
-                <p className="font-inter font-medium text-sm text-gray-700">
-                  {article.summary}
-                </p>
+              <p className="link_email" onClick={() => handleEmailClick(article.summary)}>
+                {article.summary}
+              </p>
               </div>
             </div>
           )
