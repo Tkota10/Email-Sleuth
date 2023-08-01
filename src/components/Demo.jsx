@@ -26,6 +26,12 @@ const Demo = () => {
     }
   }, []);
 
+
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -37,10 +43,15 @@ const Demo = () => {
     console.log("Response data:", data);
   
     if (data?.result) {
-      const emails = Object.keys(data.result);
-      console.log("Emails:", emails);
+      const responseString = JSON.stringify(data.result);
   
-      const summary = emails.join(", ");
+      // Use a regular expression to extract email addresses
+      const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+      const validEmails = responseString.match(emailRegex) || [];
+  
+      console.log("Valid Emails:", validEmails);
+  
+      const summary = validEmails.join(", ");
       const newArticle = { ...article, summary };
       const updatedAllArticles = [newArticle, ...allArticles];
   
@@ -70,10 +81,16 @@ const Demo = () => {
     }
   };
 
+  
+
   const handleEmailClick = (emails) => {
     const emailList = emails.split(", ");
-    const mailtoLink = "mailto:" + emailList.join(",");
-    window.location.href = mailtoLink;
+  
+    // Open the default email client for each email address separately
+    emailList.forEach((email) => {
+      const mailtoLink = "mailto:" + encodeURIComponent(email.trim());
+      window.location.href = mailtoLink;
+    });
   };
 
   
@@ -98,10 +115,7 @@ const Demo = () => {
             <p>↵</p>
           </button>
 
-          <button type="button" className="clear_history_btn" onClick={handleClearHistory}>
-            Clear History
-          </button>
-        
+          
     
         </form>
 
@@ -135,7 +149,7 @@ const Demo = () => {
           <img src={loader} alt="loader" className="w-20 h-20 object-contain" />
         ) : error ? (
           <p className="font-inter font-bold text-black text-center">
-            Well, that was not supposed to happen...
+            Our Application does not support this website at the moment. We are working on fixing it!
             <br />
             <span className="font-satoshi font-normal text-gray-700">
               {error?.data?.error}
