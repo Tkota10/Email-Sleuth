@@ -8,7 +8,7 @@ Final Application:
 
 ## Features
 
-- **Effortless Contact Information Retrieval:** Easily find essential contact details, such as email addresses and phone numbers, for businesses by providing their website URL.
+- **Effortless Contact Information Retrieval:** Easily find essential contact details for businesses by providing their website URL.
 
 - **Seamless Integration with Third-Party APIs:** Email Sleuth is integrated with various third-party APIs to ensure accurate and up-to-date contact information for the users.
 
@@ -33,7 +33,7 @@ Final Application:
 
 1. Access the deployed application [here](https://email-sleuth.vercel.app/).
 2. Enter the website URL of the company you want to find contact information for.
-3. Click the "Find Contacts" button to retrieve the contact details.
+3. Click Submit, and you can then click on the result, and it will automatically open up an email draft with the results emails.
 
 ## Contributing
 
