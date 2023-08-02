@@ -12,14 +12,14 @@ Final Application:
 
 - **Seamless Integration with Third-Party APIs:** Email Sleuth is integrated with various third-party APIs to ensure accurate and up-to-date contact information for the users.
 
-- **Data Storage with MongoDB:** User data and retrieved contact information are securely stored in MongoDB, ensuring reliability and efficiency.
+- **Data Storage with Firebase:** User data and retrieved contact information are securely stored in MongoDB, ensuring reliability and efficiency.
 
 ## Tech Stack
 
 - Frontend: React, TailwindCSS
 - State Management: Redux Toolkit
 - Backend: REST API
-- Database: MongoDB, Local Storage
+- Database: Firebase, Local Storage
 
 ## Getting Started
 
